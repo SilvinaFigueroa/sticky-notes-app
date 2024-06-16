@@ -9,9 +9,10 @@ import { v4 as uuidv4 } from 'uuid'
 
 const router = express.Router()
 
-
 router.get("/add", (req, res) => {
-    res.render('notes')
+    // Pass the user ID on the query parameter to the view
+    const userId = req.query.userId;
+    res.render('notes',{ userId })
 })
 
 router.get("/all", (req, res) => {
@@ -70,8 +71,6 @@ router.patch('/edit/:id', (req, res) => {
                 month: req.body.month,
                 note: req.body.note
             }
-            res.send(`Note id ${noteId} updated sucessfully`)
-
         }
     } catch (err) {
         res.status(400).json(err)

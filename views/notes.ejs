@@ -7,7 +7,7 @@
     <title>Calendar</title>
 </head>
 <body>
-    <form action="/notes/add" method="POST">
+    <form action="/notes/add?userId=<%= userId %>" method="POST">
         <h1>Add a Note</h1>
         <label for="month">Month:</label>
         <select id="month" name="month">
@@ -32,8 +32,6 @@
         <textarea id="note" name="note" required></textarea>
         <br>
         <button type="submit">Add Note</button>
-    </form>
-    
-    
+    </form>    
 </body>
 </html>
