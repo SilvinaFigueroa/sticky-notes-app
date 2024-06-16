@@ -8,7 +8,9 @@ import notes from '../data/notes.mjs'
 const router = express.Router()
 
 
-
+router.get("/add", (req,res)=>{
+    res.render('form')
+})
 
 
 export default router
