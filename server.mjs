@@ -1,11 +1,12 @@
 import express from 'express'
 import path from 'path';
 import monthRouter from './routes/months.mjs'
-import dayRouter from './routes/days.mjs'
+import dayRouter from './routes/users.mjs'
 import noteRouter from './routes/notes.mjs'
 
 const app = express()
 const PORT = 3000
+app.set('view engine', 'ejs')
 
 app.use(express.urlencoded({ extended :true}))
 app.use(express.json())
@@ -14,8 +15,7 @@ app.use(express.json())
 app.use(express.static(path.join(path.resolve(), 'public')));
 
 app.get('/', (req, res)=>{
-    res.sendFile((path.join(path.resolve(), 'public', 'form.html'))
-)
+    res.render('form')
 
 })
 
