@@ -52,6 +52,33 @@ router.delete('/delete/:id', (req, res) => {
     }
 })
 
+router.patch('/edit/:id', (req, res) => {
+    console.log(req.params.id)
+    try {
+        const noteId = req.params.id
+        const noteIndex = notes.findIndex(note => note.id == noteId)
+        console.log(`Note ID ${noteId} and Index ${noteIndex}`)
 
+        if (noteIndex == -1) {
+            return res.status(400).send(`Note id ${noteId} not found`)
+        }
+        else {
+            notes[noteIndex] = {
+                id: notes[noteIndex].id,
+                userId: notes[noteIndex].userId,
+                day: req.body.day,
+                month: req.body.month,
+                note: req.body.note
+            }
+            res.send(`Note id ${noteId} updated sucessfully`)
+
+        }
+    } catch (err) {
+        res.status(400).json(err)
+    }
+
+
+
+})
 
 export default router

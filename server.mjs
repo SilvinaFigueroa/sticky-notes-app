@@ -29,7 +29,7 @@ app.get('/', (req, res)=>{
 
 // Global error handling middlware
 app.use((err,req,res,next)=>{
-    res.status(500).send("Something is not working")
+    res.status(500).send(err)
 })
 
 
