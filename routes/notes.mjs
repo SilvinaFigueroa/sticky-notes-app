@@ -72,6 +72,7 @@ router.patch('/edit/:id', (req, res) => {
                 note: req.body.note
             }
         }
+        res.send(`Note id ${noteId} updated sucessfully`)
     } catch (err) {
         res.status(400).json(err)
     }
